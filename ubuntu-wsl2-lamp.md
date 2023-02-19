@@ -98,8 +98,10 @@ sudo nano info.php
 ```sh
 sudo apt-get install -y phpmyadmin
     #> Use apache2
-    #> Configure db with dbconfig-common: No
+    #> Configure db with dbconfig-common: Yes
+    #> Password (1q2w3e4R@)
 ```
+![phpmyadmin password](https://github.com/andygbox/ubuntu22-wsl/blob/78d18c50f4b36560a9925d9072901a1d2a53498a/lamp05.png?raw=true)
 
 ### Check the phpMyadmin configuration files. It should be softlink of /etc/phpmyadmin/apache.conf
 
@@ -108,3 +110,19 @@ ls -la /etc/apache2/conf-available/phpmyadmin.conf
 ```
 
 ![phpmyadmin symlink](https://github.com/andygbox/ubuntu22-wsl/blob/9ad5a1d9cae3043b67a4bbff1057b862e98a2e97/lamp06.png?raw=true)
+
+### Enable phpMyadmin Configuration to apache
+
+```sh
+a2enconf phpmyadmin.conf
+```
+
+![phpmyadmin apache](https://github.com/andygbox/ubuntu22-wsl/blob/7c8fef450e91bf07a53c36572e6cecdef1e1a8f5/lamp07.png?raw=true)
+
+### Restart Apache Server
+
+```sh
+sudo service apache2 restart
+```
+
+### Access phpMyadmin. Goto browser and hit http://localhost/phpmyadmin, now login to phpMyadmin with MySQL root Credentials
