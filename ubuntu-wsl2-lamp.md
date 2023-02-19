@@ -53,7 +53,7 @@ sudo mysql -u root -pwsl2p@SS -e "UPDATE mysql.user SET plugin = 'mysql_native_p
 ```
 
 ## C - Install Php with Extensions
-### Ubuntu 22.04 comes with the latest PHP 8.1 repository added.
+### Ubuntu 22.04 comes with the latest PHP 8.1 repository added
 
 ```sh
 sudo apt install -y php8.1 libapache2-mod-php8.1 php8.1-common php8.1-mysql \
@@ -62,7 +62,7 @@ php8.1-imap php8.1-mbstring php8.1-opcache php8.1-apcu php8.1-soap \
 php8.1-zip php8.1-intl php8.1-bcmath php8.1-bz2 php8.1-gmp zip unzip wget
 ```
 
-### Modify PHP Configurations for better performance.
+### Modify PHP Configurations for better performance
 
 ```sh
 sudo nano /etc/php/8.1/apache2/php.ini
@@ -73,7 +73,7 @@ memory_limit = 512M
 max_input_vars = 3000
 ```
 
-### Now, Restart the Apache Server.
+### Now, Restart the Apache Server
 
 ```sh
 sudo service apache2 restart
@@ -81,7 +81,7 @@ sudo service apache2 restart
 
 ## D - Verify the Php Extensions are Enabled
 
-### Deploy the php info page on apache’s document root.
+### Deploy the php info page on apache’s document root
 
 ```sh
 cd /var/www/html
@@ -91,3 +91,20 @@ sudo nano info.php
 ```
 
 ### Access the web page from the browser with the URL: http://localhost/info.php, and search the page for modules and extensions like opcache, apcu etc.
+![php8.1 localhost](https://github.com/andygbox/ubuntu22-wsl/blob/bfa003af22a9514841278e1985bb5ac82289f5bc/lamp02.png?raw=true)
+
+## E - Install phpMyadmin for Database access
+
+```sh
+sudo apt-get install -y phpmyadmin
+    #> Use apache2
+    #> Configure db with dbconfig-common: No
+```
+
+### Check the phpMyadmin configuration files. It should be softlink of /etc/phpmyadmin/apache.conf
+
+```sh
+ls -la /etc/apache2/conf-available/phpmyadmin.conf
+```
+
+![phpmyadmin symlink](https://github.com/andygbox/ubuntu22-wsl/blob/9ad5a1d9cae3043b67a4bbff1057b862e98a2e97/lamp06.png?raw=true)
